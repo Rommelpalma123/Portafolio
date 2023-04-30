@@ -1,0 +1,95 @@
+.center {
+  padding: 0 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.wrapper {
+  max-width: 1200px;
+  position: relative;
+}
+
+.wrapper i {
+  top: 50%;
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  background: #fff;
+  text-align: center;
+  line-height: 46px;
+  color: black;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.wrapper i:first-child {
+  left: -23px;
+  display: none;
+}
+
+.wrapper i:last-child {
+  right: -23px;
+}
+.wrapper .carousel {
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+.carousel.dragging img {
+  pointer-events: none;
+}
+
+.carousel img {
+  margin-top: 12px;
+  margin-left: 14px;
+  object-fit: cover;
+  height: 340px;
+  width: calc(100% / 3);
+  border-radius: 10px;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+  transition: 0.5s all;
+}
+
+.carousel img:first-child {
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: 100%;
+  }
+}
+
+.container-skills {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+  margin-left: 40px;
+  margin-right: 40px;
+
+  > p {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+  }
+}

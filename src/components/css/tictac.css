@@ -1,0 +1,169 @@
+.body-tictac {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 80vh;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.board {
+  width: fit-content;
+  text-align: center;
+}
+
+.board h1 {
+  color: #eee;
+  margin-bottom: 16px;
+}
+
+.board button {
+  padding: 8px 12px;
+  margin: 25px;
+  background: transparent;
+  border: 2px solid #eee;
+  color: #eee;
+  width: 100px;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.board button:hover {
+  background: #eee;
+  color: #222;
+}
+
+.board .game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.turn {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+  width: fit-content;
+  position: relative;
+  border-radius: 10px;
+}
+
+.turn .square,
+.winner .square {
+  width: 70px;
+  height: 70px;
+  pointer-events: none;
+  border-color: transparent;
+}
+
+.square.is-selected {
+  color: #fff;
+  background: #09f;
+}
+
+.winner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 2%;
+  left: 0;
+  display: grid;
+  place-items: center;
+}
+
+.winner .text {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 300px;
+  width: 320px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.winner .win {
+  margin: 0 auto;
+  width: fit-content;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #a92727;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 48px;
+}
+
+.info-game {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.info-game h4 {
+  text-align: justify;
+  font-family: "Quicksand";
+}
+
+@media screen and (max-width: 900px) {
+  .info-game {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .body-tictac {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 45vh;
+}
+}
+
+.contenedor-imagen {
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 40px;
+  height: 300px;
+
+  .imagen-pokemon {
+    height: 100%;
+  }
+
+}
+
+.redireccion-pokemon:hover::before {
+  content: "click para redireccionar";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
