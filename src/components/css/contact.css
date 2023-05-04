@@ -355,3 +355,13 @@
   height: 50px;
   border-radius: 10px;
 }
+
+
+.tabla-info {
+  display: flex;
+  margin-left: 30px;
+  margin-right: 30px;
+  justify-content: space-around;
+  align-content: center;
+}
+

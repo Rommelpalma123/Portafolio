@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import '../../css/contact.css'
-import uniquid from 'uniquid'
 import { Footer } from './../home/Footer.jsx'
+import { API, graphqlOperation } from 'aws-amplify'
+import { createContacto } from '../../../graphql/mutations'
+import { listContactos } from '../../../graphql/queries'
 
 export const Contact = () => {
-  const [nombre, setNombre] = useState('')
-  const [email, setEmail] = useState('')
-  const [asunto, setAsunto] = useState('')
-  const [descripcion, setDescripcion] = useState('')
+  const [post, setPost] = useState({
+    name: '',
+    email: '',
+    asunto: '',
+    description: ''
+  })
+  const [contactos, setContactos] = useState([])
   const [nombreError, setNombreError] = useState('')
   const [emailError, setEmailError] = useState('')
   const [asuntoError, setAsuntoError] = useState('')
@@ -16,25 +20,33 @@ export const Contact = () => {
   const [enviado, setEnviado] = useState(false) // Nuevo estado
   const [mensaje, setMensaje] = useState()
 
+  useEffect(() => {
+    async function loadContacts () {
+      const resultado = await API.graphql(graphqlOperation(listContactos))
+      setContactos(resultado.data.listContactos.items)
+    }
+    loadContacts()
+  })
+
   function verificarCampos () {
     let isValid = true
 
-    if (!nombre.trim()) {
+    if (!post.name) {
       setNombreError('Por favor, ingrese su nombre')
       isValid = false
     }
 
-    if (!email) {
+    if (!post.email) {
       setEmailError('Por favor, ingrese su correo electrónico')
       isValid = false
     }
 
-    if (!asunto.trim()) {
+    if (!post.asunto) {
       setAsuntoError('Por favor, ingrese un asunto')
       isValid = false
     }
 
-    if (!descripcion) {
+    if (!post.description) {
       setDescripcionError('Por favor, ingrese una descripción')
       isValid = false
     }
@@ -50,32 +62,10 @@ export const Contact = () => {
     return isValid
   }
 
-  function agregar () {
-    const usuario = {
-      nombre,
-      email,
-      asunto,
-      descripcion,
-      idcontacto: uniquid()
-    }
-
-    function limpiarInputs () {
-      setNombre('')
-      setEmail('')
-      setAsunto('')
-      setDescripcion('')
-    }
-
-    axios
-      .post('https://portafolio-5yko.onrender.com/api/contacto', usuario)
-      .then((res) => {
-        limpiarInputs()
-        console.log(res)
-        setEnviado(verificarCampos(), true) // Establecer el estado como true
-      })
-      .catch((err) => {
-        console.log('error al enviar los datos', err.message)
-      })
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setEnviado(verificarCampos())
+    await API.graphql(graphqlOperation(createContacto, { input: post }))
   }
 
   return (
@@ -95,25 +85,25 @@ export const Contact = () => {
               className={enviado ? 'alert-success' : 'alert-error'}
               role='alert'
             >
-              {enviado
-                ? 'send success'
-                : 'Error to send, verify your info'}
+              {enviado ? 'send success' : 'Error to send, verify your info'}
             </div>
             )
           : null}
       </div>
-
       <div className='form-container'>
-        <div className='form'>
+        <form
+          className='form'
+          onSubmit={handleSubmit}
+        >
           <div className='form-input-name'>
             <input
               type='text'
               className='input-name'
+              name='name'
               id='username'
               placeholder='Write your name'
-              value={nombre}
               onChange={(e) => {
-                setNombre(e.target.value)
+                setPost({ ...post, name: e.target.value })
               }}
               onFocus={() => {
                 setNombreError('')
@@ -138,11 +128,11 @@ export const Contact = () => {
             <input
               type='email'
               id='email'
+              name='email'
               className='input-email'
               placeholder='ejemplo@gmail.com'
-              value={email}
               onChange={(e) => {
-                setEmail(e.target.value)
+                setPost({ ...post, email: e.target.value })
               }}
               onFocus={() => {
                 setEmailError('')
@@ -161,10 +151,10 @@ export const Contact = () => {
               className='input-asunto'
               type='text'
               id='asunto'
+              name='asunto'
               placeholder='Escriba un asunto'
-              value={asunto}
               onChange={(e) => {
-                setAsunto(e.target.value)
+                setPost({ ...post, asunto: e.target.value })
               }}
               onFocus={() => {
                 setAsuntoError('')
@@ -190,11 +180,11 @@ export const Contact = () => {
             <textarea
               placeholder='Descripción'
               id='description'
+              name='description'
               className='input-description'
               rows='3'
-              value={descripcion}
               onChange={(e) => {
-                setDescripcion(e.target.value)
+                setPost({ ...post, description: e.target.value })
               }}
               onFocus={() => {
                 setDescripcionError('')
@@ -211,15 +201,26 @@ export const Contact = () => {
             )}
           </div>
           <div className='form-buttom'>
-            <button
-              onClick={agregar}
-              className='buttom'
-            >
-              Sent
-            </button>
+            <button className='buttom'>Sent</button>
           </div>
-        </div>
+        </form>
       </div>
+      <div>
+        {
+          contactos.map((contacto) => {
+            return (
+              <div key={contacto.id}>
+                <table className='tabla-info'>
+                  <h3>{contacto.name}</h3>
+                  <h3>{contacto.asunto}</h3>
+                  <h3>{contacto.description}</h3>
+                </table>
+              </div>
+            )
+          })
+        }
+      </div>
+      <br />
       <Footer />
     </div>
   )

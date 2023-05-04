@@ -6,7 +6,7 @@ import { Contact } from './components/pages/contact/Contact.jsx'
 import { Home } from './components/pages/home/Home.jsx'
 import { FollowMouse } from './components/pages/home/FollowMouse.jsx'
 
-function App () {
+function App ({ signOut, user }) {
   return (
     <div>
       <FollowMouse />
