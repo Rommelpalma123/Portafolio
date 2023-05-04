@@ -17,6 +17,12 @@
       },
       "auth": {
         "portafolio50b7596a": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3ab1uwnri23jj",
+          "type": "manual"
+        }
       }
     }
   }
