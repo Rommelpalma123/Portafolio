@@ -1,35 +1,25 @@
 import { Routes, Route } from 'react-router-dom'
 import { TicTac } from './components/TicTac.jsx'
-import { NavBar } from './components/pages/NavBar.jsx'
-import { Skills } from './components/pages/skills/Skills.jsx'
-import { Contact } from './components/pages/contact/Contact.jsx'
-import { Home } from './components/pages/home/Home.jsx'
-import { FollowMouse } from './components/pages/home/FollowMouse.jsx'
+import { Skills } from './pages/skills/Skills.jsx'
+import { Contact } from './pages/contact/Contact.jsx'
+import { Home } from './pages/home/Home.jsx'
+import { FollowMouse } from './pages/home/FollowMouse.jsx'
+import { SideBar } from './components/Sidebar.jsx'
 
-function App ({ signOut, user }) {
+function App () {
   return (
-    <div>
+    <div className='container-padre'>
       <FollowMouse />
-      <NavBar />
-      <Routes>
-        <Route
-          path=''
-          element={<Home />}
-        />
-        <Route
-          path='/works'
-          element={<TicTac />}
-        />
-        <Route
-          path='/skills'
-          element={<Skills />}
-        />
-        <Route
-          path='/contact'
-          element={<Contact />}
-        />
-      </Routes>
+      <SideBar />
+      <div className='content' style={{ height: '100%', width: '100%' }}>
+        <Routes>
+          <Route path='' element={<Home />} />
+          <Route path='/works' element={<TicTac />} />
+          <Route path='/skills' element={<Skills />} />
+          <Route path='/contact' element={<Contact />} />
+        </Routes>
+      </div>
     </div>
-  )
+  );
 }
 export default App

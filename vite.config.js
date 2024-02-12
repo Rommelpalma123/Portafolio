@@ -1,13 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
+import path from 'path';
+import macrosPlugin from 'babel-plugin-macros';
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: [
-      { find: './runtimeConfig', replacement: './runtimeConfig.browser' },
-      { find: '@', replacement: '/src' }
-    ]
+  plugins: [react(), macrosPlugin()],
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+    watch: {
+      usePolling: true,
+    },
   },
-  plugins: [react()]
-})
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+});

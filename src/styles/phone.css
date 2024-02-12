@@ -1,0 +1,366 @@
+.phone-background {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 280px;
+  height: 530px;
+  border-radius: 20px;
+  border-image: linear-gradient(to bottom, #d4efff, #ffffff) 1;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.secction-phone {
+  text-align: center;
+  margin: 50px 70px 30px 40px;
+  height: 630px;
+  width: 320px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  & .phone {
+    position: relative;
+    width: 260px;
+    height: 510px;
+    border-radius: 20px;
+    background-color: #27272f;
+    .phone-bar {
+      display: flex;
+      justify-content: space-between;
+
+      & .phone-camera-operador {
+        display: flex;
+        gap: 5px;
+
+        .phone-camera {
+          background-color: black;
+          height: 12px;
+          width: 12px;
+          border-radius: 100%;
+          margin-left: 12px;
+          margin-top: 5px;
+        }
+
+        .phone-operador {
+          color: #ffffff;
+          font-size: 10px;
+          margin-top: -2px;
+        }
+      }
+
+      & .phone-signal-battery {
+        display: flex;
+
+        .phone-wifi {
+          font-size: 10px;
+          color: #ffffff;
+        }
+
+        .phone-signal {
+          font-size: 10px;
+          color: #ffffff;
+        }
+
+        .phone-battery {
+          color: #ffffff;
+          font-size: 10px;
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+
+.list-elements {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: black;
+  height: 450px; /* ajusta la altura según tus necesidades */
+  overflow-y: scroll;
+}
+
+.list-elements::-webkit-scrollbar {
+  display: none;
+}
+
+.contenedor-app {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 12px;
+}
+.app-instagran > a {
+  margin-top: 12px;
+  color: rgb(167, 34, 123);
+  font-size: 32px;
+}
+.app-whatsapp > a {
+  margin-top: 20px;
+  color: #25d366;
+  font-size: 32px;
+}
+
+.app-name {
+  margin-top: -6px;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.app-telegrmam > a {
+  margin-top: 6px;
+  color: rgb(27, 135, 177);
+  font-size: 32px;
+}
+
+.app-twitter > a {
+  color: rgb(27, 135, 177);
+  font-size: 32px;
+}
+
+.app-github > a {
+  font-size: 32px;
+  color: black;
+}
+
+.app-linkedin > a {
+  font-size: 32px;
+  color: #0a66c2;
+}
+
+.app-facebook > a {
+  font-size: 32px;
+  color: #0a66c2;
+}
+
+.phone-bottoms {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.secction-description {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.imagen-perfil {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  animation: fadeInRight 3s ease-out forwards;
+}
+
+.info-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.contenido {
+  opacity: 0;
+  animation: fadeInRight 3s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.imagen-perfil {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+
+.contenido {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+}
+
+.container-tablet {
+  z-index: -1;
+  position: absolute;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin-left: 318px;
+  margin-top: -800px;
+  height: 610px;
+  width: fit-content;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  background-size: 200%; /* Ajusta el tamaño del gradiente */
+  animation: gradient 2s linear infinite alternate;
+  & .back-tablet {
+    position: relative;
+    max-width: 97%;
+    height: 570px;
+    border-radius: 10px;
+    background-color: #27272f;
+    display: flex;
+    gap: 3px;
+
+    & .tablet-item {
+      margin-top: -16px;
+      height: 10px;
+      width: 16px;
+      border-radius: 50%;
+      background-color: #ffffff;
+    }
+  }
+  & .vertical-bar {
+    margin-left: -30px;
+    border-right: 2px #3c3c49 solid;
+
+    & .container-imagen {
+      display: flex;
+      margin-left: 6px;
+      margin-top: 10px;
+      width: fit-content;
+      align-items: center;
+      gap: 5px;
+      margin-right: 3px;
+
+      & .imagen-perfil-bar {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+      }
+
+      & .nombre-bar {
+        font-size: 12px;
+        color: #ffffff;
+      }
+    }
+    & .bar-item {
+      margin-left: 6px;
+      text-align: start;
+      margin-right: 45px;
+    }
+
+    & .bar-item-color {
+      margin-top: 6px;
+      background-color: #3c3c49;
+      margin-left: 6px;
+      text-align: start;
+    }
+    & .selected {
+      background-color: #c7c7c7;
+      color: #ffffff;
+    }
+  }
+}
+
+.container-info-personal::-webkit-scrollbar {
+  display: none;
+}
+
+.container-info-personal {
+  text-align: center;
+  overflow-y: scroll;
+
+  .info-personal {
+    background-color: #26425a;
+    max-width: 900px;
+    max-height: 1500px;
+    margin-left: 12px;
+    margin-top: 16px;
+    margin-right: 22px;
+    border-radius: 12px;
+
+    & .board-info-personal {
+      display: grid;
+      width: fit-content;
+      padding: 5px;
+
+      & p {
+        text-align: start;
+        width: fit-content;
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+h3 {
+  margin-top: 5px;
+  margin-left: 12px;
+}
+
+.container-icon {
+  display: flex;
+  gap: 4px;
+  margin-left: 3px;
+
+  .icon-react {
+    font-size: 20px;
+    color: #25b9d3;
+    margin-top: 3px;
+  }
+
+  .icon-javascript {
+    font-size: 20px;
+    margin-top: 3px;
+    color: #f7df1e;
+  }
+
+  .icon-csharp {
+    font-size: 20px;
+    margin-top: 3px;
+    color: #68217a;
+  }
+
+  .icon-java {
+    font-size: 20px;
+    margin-top: 3px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.container-description {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;  
+}
+
+.container-description p {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 25px;
+  font-family: "Quicksand";
+  font-style: normal;
+  text-align: justify;
+}
